@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\RatingScaleMatrixController;
+use App\Http\Controllers\PmsRatingScaleMatrixController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/rating-scale-matrix', [RatingScaleMatrixController::class, 'index']);
+Route::get('/rating-scale-matrix', [PmsRatingScaleMatrixController::class, 'index']);

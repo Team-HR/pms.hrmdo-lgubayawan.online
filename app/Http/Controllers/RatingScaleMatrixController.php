@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use App\Models\RatingScaleMatrix;
+use App\Models\PmsRatingScaleMatrix;
 
 
-class RatingScaleMatrixController extends Controller
+class PmsRatingScaleMatrixController extends Controller
 {
     /**
      * Display a listing of the resource.
