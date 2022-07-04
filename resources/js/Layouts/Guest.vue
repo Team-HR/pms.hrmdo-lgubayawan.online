@@ -1,50 +1,23 @@
 <template>
-  <navbar>
+  <navbar class="fixed top-0 left-0 w-full">
     <template #links>
-      <!-- <a
-        href="#responsive-header"
-        class="
-          block
-          mt-4
-          lg:inline-block lg:mt-0
-          text-teal-100
-          hover:text-white
-          mr-4
-        "
-      >
-        Rating Scale Matrix
-      </a> -->
+      <!-- <Button class="p-button p-button-secondary" label="Rating Scale Matrix"></Button> -->
+      <!-- <Button class="p-button" label="Login"></Button> -->
     </template>
     <template #right-items>
-      <!-- <inertia-link
-        href="login"
-        class="
-          block
-          mt-4
-          lg:inline-block lg:mt-0
-          text-teal-100
-          hover:text-white
-          mr-4
-        "
-      >
-        Login
-      </inertia-link>
-      <inertia-link
-        href="register"
-        class="
-          block
-          mt-4
-          lg:inline-block lg:mt-0
-          text-teal-100
-          hover:text-white
-          mr-4
-        "
-      >
-        Register
-      </inertia-link> -->
+      <Button
+        class="p-button active"
+        label="Login"
+        @click="$inertia.get('/login')"
+      ></Button>
+      <Button
+        class="p-button ml-2"
+        label="Register"
+        @click="$inertia.get('/register')"
+      ></Button>
     </template>
   </navbar>
-  <div class="container mx-auto px-4">
+  <div class="mt-7">
     <slot />
   </div>
 </template>

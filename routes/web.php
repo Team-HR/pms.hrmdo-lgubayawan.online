@@ -4,7 +4,6 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
-use App\Models\AgriExtensionCompetenciesRecord;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +16,7 @@ use App\Models\AgriExtensionCompetenciesRecord;
 */
 
 Route::get('/', function () {
-    $record = AgriExtensionCompetenciesRecord::all();
-    $count = $record->count();
-    return Inertia::render('Welcome',['total_respondents' => $count]);
+    return Inertia::render('Welcome');
 });
 
 Route::get('/dashboard', function () {
@@ -27,5 +24,4 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
-require __DIR__.'/pig.php';
 require __DIR__.'/pms.php';

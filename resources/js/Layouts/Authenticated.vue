@@ -1,52 +1,24 @@
 <template>
-  <navbar>
+  <navbar class="fixed top-0 left-0 w-full">
     <template #links>
-      <inertia-link
-        href="/dashboard"
-        class="
-          block
-          mt-4
-          lg:inline-block lg:mt-0
-          text-teal-100
-          hover:text-white
-          mr-4
-        "
+      <Button
+        v-for="(item, i) in items"
+        :key="i"
+        @click="$inertia.get(item.to)"
+        class="mx-1"
+        :class="active_url == item.to? 'shadow-8':''"
       >
-        Dashboard
-      </inertia-link>
-      <inertia-link
-        href="/rating-scale-matrix"
-        class="
-          block
-          mt-4
-          lg:inline-block lg:mt-0
-          text-teal-100
-          hover:text-white
-          mr-4
-        "
-      >
-        Rating Scale Matrix
-      </inertia-link>
+        {{ item.label }}
+      </Button>
     </template>
     <template #right-items>
-      <span class="mx-10 text-white">{{ $page.props.auth.user.username }}</span>
-
-      <button
-        @click="$inertia.post(route('logout'))"
-        class="
-          block
-          mt-4
-          lg:inline-block lg:mt-0
-          text-teal-100
-          hover:text-white
-          mr-4
-        "
-      >
+      <span class="mr-5 text-white">{{ $page.props.auth.user.username }}</span>
+      <Button @click="$inertia.post(route('logout'))" class="p-button-danger">
         Logout
-      </button>
+      </Button>
     </template>
   </navbar>
-  <div class="container mx-auto px-4">
+  <div class="mt-7">
     <slot />
   </div>
 </template>
@@ -55,6 +27,23 @@ import Navbar from "@/Components/Navbar.vue";
 export default {
   components: {
     Navbar,
+  },
+  data() {
+    return {
+      active_url: this.$inertia.page.url,
+      items: [
+        {
+          icon: "",
+          label: "Dashboard",
+          to: "/dashboard",
+        },
+        {
+          icon: "",
+          label: "Rating Scale Matrix",
+          to: "/rating-scale-matrix",
+        },
+      ],
+    };
   },
 };
 </script>

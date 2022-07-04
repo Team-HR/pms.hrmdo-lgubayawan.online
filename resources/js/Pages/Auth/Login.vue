@@ -5,63 +5,50 @@
     {{ status }}
   </div>
 
+  <form @submit.prevent="submit">
+    <Card class="mx-auto w-3 mt-3">
+      <template #title> LOGIN </template>
+      <template #content>
+        <div class="field w-full">
+          <label for="username">Username</label>
+          <InputText
+            class="w-full"
+            id="username"
+            v-model="form.username"
+            autocomplete="username"
+            required
+          />
+        </div>
+        <div class="field w-full">
+          <label for="password">Password</label>
+          <InputText
+            class="w-full"
+            id="password"
+            type="password"
+            v-model="form.password"
+            autocomplete="current-password"
+            required
+          />
+        </div>
 
-  <form @submit.prevent="submit" class="w-1/3 mx-auto mt-10 pt-10 rounded-lg shadow-xl p-10">
-    <div class="flex mb-5">
-      <i-label for="username" class="mt-2 mr-5 text-right">Username</i-label>
-      <i-input
-        type="text"
-        id="username"
-        class=""
-        v-model="form.username"
-        required
-        autofocus
-        autocomplete="username"
-        placeholder="Username"
-      />
-    </div>
-
-    <div class="flex mb-5">
-      <i-label for="password" class="mt-2 mr-5 text-right">Password</i-label>
-      <i-input
-        type="password"
-        id="password"
-        class=""
-        v-model="form.password"
-        required
-        autofocus
-        autocomplete="current-password"
-        placeholder="Password"
-      />
-    </div>
-
-    <div class="mb-3 form-check">
-      <input
-        type="checkbox"
-        class="mr-2 scale-150"
-        id="remember"
-        name="remember"
-        :checked="form.remember"
-      />
-      <i-label class="form-check-label" for="remember">Remember me</i-label>
-    </div>
-
-    <div>
-      <!-- <inertia-link
-        v-if="canResetPassword"
-        :href="route('password.request')"
-        class="btn-primary"
-        >Forgot your password?</inertia-link
-      > -->
-      <i-button
-        type="submit"
-        class="btn-primary"
-        :class="{ 'opacity-25': form.processing }"
-        :disabled="form.processing"
-      >
-        Log in
-      </i-button>
-    </div>
+        <div class="field-checkbox">
+          <Checkbox id="remember" v-model="form.remember" :binary="true" />
+          <label for="remember">Remember me</label>
+        </div>
+      </template>
+      <template #footer>
+        <div class="field">
+          <Button
+            type="submit"
+            class="p-button-primary"
+            :class="{ 'opacity-25': form.processing }"
+            :disabled="form.processing"
+            label="Login"
+          >
+          </Button>
+        </div>
+      </template>
+    </Card>
   </form>
 </template>
 
